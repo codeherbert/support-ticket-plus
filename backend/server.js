@@ -8,4 +8,7 @@ app.get('/', (req, res) => {
     res.status(200).json({message: "Welcome to the support ticket API"});
 });
 
+// Routes
+app.use('/api/users', require('./routes/userRoutes'));
+
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
