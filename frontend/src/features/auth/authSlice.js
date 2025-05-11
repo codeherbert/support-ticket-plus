@@ -34,7 +34,22 @@ export const authSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        // add cases
+        builder
+            .addCase(register.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(register.isFulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSucess = true
+                state.user = action.payload
+            })
+            .addCase(register.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.user =null
+
+            })
     }
 })
 
