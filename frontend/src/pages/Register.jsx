@@ -22,7 +22,7 @@ function Register() {
 
     useEffect(() => {
         if(isError) {
-            toast.message(message);
+            toast.error(message);
         }
 
         // Redirect when logged in
