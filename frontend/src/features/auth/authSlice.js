@@ -29,7 +29,12 @@ export const register = createAsyncThunk(
 export const login = createAsyncThunk(
     'auth/login', 
     async (user, thunkAPI) => {  
-        console.log(user);
+        try {
+            return await authService.login(user);
+        } catch (error) {
+            const message = (message.response && message.response.data && message.response.data.message) || error.message || error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
     }
 );
 
