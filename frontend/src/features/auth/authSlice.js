@@ -19,8 +19,9 @@ export const register = createAsyncThunk(
         try {
             return await authService.register(user);
         } catch (error) {
-            const message = (message.response && message.response.data && message.response.data.message) || error.message || error.toString();
+            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
             return thunkAPI.rejectWithValue(message);
+            // return thunkAPI.rejectWithValue(extractErrorMessage(error))
         }
     }
 );
@@ -32,8 +33,9 @@ export const login = createAsyncThunk(
         try {
             return await authService.login(user);
         } catch (error) {
-            const message = (message.response && message.response.data && message.response.data.message) || error.message || error.toString();
+            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
             return thunkAPI.rejectWithValue(message);
+            // return thunkAPI.rejectWithValue(extractErrorMessage(error))
         }
     }
 );
@@ -87,7 +89,7 @@ export const authSlice = createSlice({
 
             })
             .addCase(logout.fulfilled, (state) => {
-                state.user = null;
+                state.user = null
             })
     },
 })
