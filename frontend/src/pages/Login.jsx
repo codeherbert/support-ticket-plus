@@ -51,7 +51,7 @@ function Login() {
     }
 
     if(isLoading) {
-        <Spinner />
+        return <Spinner />
     }
 
     return (         
