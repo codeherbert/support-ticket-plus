@@ -20,7 +20,7 @@ function Header() {
                 <Link to="/">Support Desk</Link>
                 <ul>
                     {user ? (
-                        <button className="btn"><FaSignOutAlt />Logout</button>
+                        <button className="btn" onClick={onLogout}><FaSignOutAlt />Logout</button>
                     ) : (
                     <>
                         <li>
