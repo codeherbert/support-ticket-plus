@@ -17,7 +17,7 @@ const createTicket = asyncHandler(async (req, res) => {
     res.status(200).json({message: 'createTicket'});
 });
 
-module.exports {
+module.exports = {
     getTickets,
     createTicket,
 }
